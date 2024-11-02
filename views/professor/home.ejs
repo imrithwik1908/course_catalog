@@ -1,0 +1,22 @@
+<!-- views/professor/home.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Home</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome Dr. <%= user.name %>!</h1>
+    </header>
+    <h2>Your Courses:</h2>
+    <ul>
+        <% user.courses.forEach(course => { %>
+            <li><%= course.name %> - <%= course.credits %> Credits</li>
+        <% }) %>
+    </ul>
+    <a href="/professor/add-course">Add New Course</a>
+</body>
+</html>

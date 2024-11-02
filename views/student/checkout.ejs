@@ -1,0 +1,38 @@
+<!-- views/student/checkout.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+        <a href="/student/home">Back to Home</a>
+    </header>
+    <h2>Your Cart:</h2>
+    <ul id="courseList">
+        <% if (cart.length === 0) { %>
+            <li>Your cart is empty.</li>
+        <% } else { %>
+            <% cart.forEach(course => { %>
+                <% if (course) { %>
+                    <li>
+                        <%= course.name %> - <%= course.credits %> Credits
+                    </li>
+                <% } else { %>
+                    <li>Course not found.</li>
+                <% } %>
+            <% }) %>
+        <% } %>
+    </ul>
+
+    <% if (cart.length > 0) { %>
+        <form id="confirmEnrollment" method="POST" action="/student/confirm">
+            <button type="submit">Confirm Enrollment</button>
+        </form>
+    <% } %>
+</body>
+</html>
